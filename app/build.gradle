@@ -1,0 +1,136 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'androidx.navigation.safeargs.kotlin'
+    id 'kotlin-parcelize'
+    id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
+}
+
+android {
+    namespace 'com.farhan.moviepocket'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.farhan.moviepocket"
+        minSdk 24
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+
+    buildTypes.each {
+        it.buildConfigField 'String', 'THE_MOVIE_DB_API_KEY', TheMovieDBApiKey
+    }
+
+    buildFeatures {
+        buildConfig = true
+        viewBinding true
+        dataBinding false
+    }
+}
+
+dependencies {
+
+    def appcompatVersion = '1.6.1'
+    def materialVersion = '1.9.0'
+    def constraintLayoutVersion = '2.1.4'
+    def fragmentKtxVersion = '1.6.1'
+    def activityKtxVersion = '1.7.2'
+    def coreKtxVersion = '1.12.0'
+    def lifecycleVersion = '2.6.2'
+    def navigationVersion = '2.7.3'
+    def coroutinesVersion = '1.7.3'
+    def hiltVersion = '2.46.1'
+    def hiltCompilerVersion = '1.0.0'
+    def roomVersion = '2.5.2'
+    def retrofitVersion = '2.9.0'
+    def loggingInterceptorVersion = '5.0.0-alpha.2'
+    def sandwichVersion = '1.3.9'
+    def glideVersion = '4.16.0'
+    def glideTransformationsVersion = '4.3.0'
+    def timberVersion = '5.0.1'
+    def testJunitVersion = '4.13.2'
+    def testJunitKtxVersion = '1.1.5'
+    def testRobolectricVersion = '4.9.2'
+    def testCoreKtxVersion = '1.5.0'
+    def testMockitoVersion = '4.0.0'
+    def testMockkVersion = '1.13.8'
+    def androidTestJunitKtxVersion = '1.1.5'
+    def androidTestEspressoVersion = '3.5.1'
+    def androidTestArchCoreTesting = '2.2.0'
+
+    // Material Theme + Views + Kts
+    implementation "androidx.appcompat:appcompat:$appcompatVersion"
+    implementation "com.google.android.material:material:$materialVersion"
+    implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
+    implementation "androidx.fragment:fragment-ktx:$fragmentKtxVersion"
+    implementation "androidx.activity:activity-ktx:$activityKtxVersion"
+    implementation "androidx.core:core-ktx:$coreKtxVersion"
+
+    // Android lifecycles
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
+
+    // Navigation Components
+    implementation "androidx.navigation:navigation-runtime-ktx:$navigationVersion"
+    implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
+    implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
+
+    // Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
+
+    // Dagger Hilt
+    implementation "com.google.dagger:hilt-android:$hiltVersion"
+    kapt "com.google.dagger:hilt-compiler:$hiltVersion"
+    kapt"androidx.hilt:hilt-compiler:$hiltCompilerVersion"
+
+    // Room Database
+    implementation "androidx.room:room-runtime:$roomVersion"
+    kapt "androidx.room:room-compiler:$roomVersion"
+    implementation "androidx.room:room-ktx:$roomVersion"
+
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$loggingInterceptorVersion"
+    implementation "com.github.skydoves:sandwich:$sandwichVersion"
+
+    // Glide
+    implementation "com.github.bumptech.glide:glide:$glideVersion"
+    implementation "jp.wasabeef:glide-transformations:$glideTransformationsVersion"
+
+    // Timber Logging
+    implementation "com.jakewharton.timber:timber:$timberVersion"
+
+    // Testing
+    testImplementation "junit:junit:$testJunitVersion"
+    testImplementation "org.robolectric:robolectric:$testRobolectricVersion"
+    testImplementation "androidx.test:core-ktx:$testCoreKtxVersion"
+    testImplementation "androidx.test.ext:junit-ktx:$testJunitKtxVersion"
+    testImplementation "org.mockito.kotlin:mockito-kotlin:$testMockitoVersion"
+    testImplementation "io.mockk:mockk:$testMockkVersion"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesVersion"
+    androidTestImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesVersion"
+    androidTestImplementation "androidx.test.ext:junit:$androidTestJunitKtxVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$androidTestEspressoVersion"
+    androidTestImplementation "androidx.arch.core:core-testing:$androidTestArchCoreTesting"
+}

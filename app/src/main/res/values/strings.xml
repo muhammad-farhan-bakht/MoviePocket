@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Movie Pocket</string>
+    <string name="generic_error_message">Something has gone wrong!</string>
+    <string name="movie_details">Movie Details</string>
+    <string name="search_hint">Search Movie by Name</string>
+    <string name="search">Search</string>
+    <string name="empty_list_error">No Data Found. Please check your Internet Connection</string>
+</resources>
